@@ -569,6 +569,68 @@ a.card:hover .card-link { text-decoration: underline; }
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 
+/* ---------- pricing ---------- */
+.pricing-list {
+  list-style: none; margin: 28px 0 0; padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.pricing-list li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 18px 22px;
+  border-top: 1px solid var(--border);
+}
+.pricing-list li:first-child { border-top: 0; }
+.pricing-list .p-name { font-weight: 600; }
+.pricing-list .p-name small {
+  display: block; margin-top: 3px;
+  font-weight: 400; font-size: .85rem; color: var(--text-soft);
+}
+.pricing-list .p-price {
+  flex: none; text-align: right; white-space: nowrap;
+  font-weight: 700; color: var(--accent-strong);
+}
+.pricing-list .p-price small {
+  display: block; margin-top: 2px;
+  font-weight: 500; font-size: .78rem; color: var(--text-soft);
+}
+.pricing-list li.p-highlight { background: var(--accent-soft); }
+
+.price-callout {
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-top: 24px; padding: 20px 22px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+.price-callout .c-ico {
+  flex: none; display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 11px;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.price-callout h3 { font-size: 1.05rem; margin: 2px 0 4px; }
+.price-callout p { margin: 0; color: var(--text-soft); }
+
+.price-fine { margin-top: 20px; font-size: .88rem; color: var(--text-soft); max-width: 60ch; }
+
+/* short price note on service pages */
+.price-hint {
+  margin: 26px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: .95rem; color: var(--text-soft);
+}
+.price-hint strong { color: var(--text); }
+.price-hint a { color: var(--accent-strong); font-weight: 600; white-space: nowrap; }
+.price-hint a:hover { text-decoration: underline; }
+
 /* accessibility: honour reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; transition: none !important; }
