@@ -40,8 +40,8 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 .5em; letter-spacing: -0.03em; font-w
 p { margin: 0 0 1em; }
 a { color: inherit; text-decoration: none; }
 
-/* consistent inline line-icons (stroke inherits text color) */
-.ico { width: 24px; height: 24px; display: block; stroke-width: 1.75; }
+/* consistent inline icons — Phosphor (filled, inherit text color via currentColor) */
+.ico { width: 24px; height: 24px; display: block; fill: currentColor; }
 code {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   background: var(--bg-alt);
