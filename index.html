@@ -237,7 +237,7 @@
         <!--  EDIT ME: Duplicate a .project block for each real project.    -->
         <!-- ============================================================= -->
         <div class="projects">
-          <a class="project" href="#" aria-label="Nintendo Switch Lite thumbstick repair">
+          <button type="button" class="project" aria-label="Nintendo Switch Lite thumbstick repair">
             <div class="project-thumb has-img" data-tag="Console repair">
               <img src="assets/switch-lite-thumbstick.jpg" alt="Nintendo Switch Lite opened on a repair mat — motherboard and blue housing separated, with the replacement right analog thumbstick module, a screwdriver and tweezers" />
             </div>
@@ -246,9 +246,9 @@
               <p>A customer&rsquo;s right analog stick had stopped responding. I opened the console, removed the faulty thumbstick, and fitted a new module, back to full, drift-free control.</p>
               <ul class="tags"><li>Console repair</li><li>Analog stick</li><li>Replacement</li></ul>
             </div>
-          </a>
+          </button>
 
-          <a class="project" href="#" aria-label="Project one">
+          <button type="button" class="project" aria-label="Project one">
             <div class="project-thumb has-img" data-tag="Build">
               <img src="assets/pc-build.jpg" alt="Custom white RGB gaming PC with tempered glass, RTX graphics card, and triple cooling fans" />
             </div>
@@ -257,25 +257,25 @@
               <p>A white-themed RGB build with tempered glass and an RTX graphics card, cable-managed and stress-tested.</p>
               <ul class="tags"><li>PC build</li><li>Water/air cooling</li><li>RGB</li></ul>
             </div>
-          </a>
+          </button>
 
-          <a class="project" href="#" aria-label="Project two">
+          <button type="button" class="project" aria-label="Project two">
             <div class="project-thumb" data-tag="Repair"><svg class="ico" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></svg></div>
             <div class="project-body">
               <h3>Phone screen &amp; battery repair</h3>
               <p>Replaced a cracked screen and swollen battery, bringing a phone back to full working order.</p>
               <ul class="tags"><li>Screen</li><li>Battery</li><li>Diagnostics</li></ul>
             </div>
-          </a>
+          </button>
 
-          <a class="project" href="#" aria-label="Project three">
+          <button type="button" class="project" aria-label="Project three">
             <div class="project-thumb" data-tag="Diagnostics"><svg class="ico" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg></div>
             <div class="project-body">
               <h3>No-boot PC diagnosis</h3>
               <p>Tracked a computer that wouldn&rsquo;t start down to the exact faulty part, and laid out the fix.</p>
               <ul class="tags"><li>Troubleshooting</li><li>Hardware</li><li>Advice</li></ul>
             </div>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -380,6 +380,22 @@
         </div>
       </div>
     </section>
+    <!-- Project lightbox (opened from the portfolio cards) -->
+    <div class="lightbox" id="lightbox" hidden>
+      <div class="lightbox-overlay" data-lb-close></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+        <button type="button" class="lightbox-close" data-lb-close aria-label="Close">
+          <svg class="ico" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+        </button>
+        <div class="lightbox-media" id="lbMedia"></div>
+        <div class="lightbox-info">
+          <h3 id="lbTitle"></h3>
+          <p id="lbDesc"></p>
+          <ul class="tags" id="lbTags"></ul>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer class="site-footer">

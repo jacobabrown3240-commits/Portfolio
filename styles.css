@@ -397,6 +397,10 @@ a.card:hover .card-link { text-decoration: underline; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: transform .15s ease, box-shadow .15s, border-color .15s;
+  /* works as a <button>: strip native styling, keep it full-width */
+  appearance: none; -webkit-appearance: none;
+  width: 100%; padding: 0; margin: 0;
+  font: inherit; color: inherit; text-align: left; cursor: pointer;
 }
 .project:hover {
   transform: translateY(-4px);
@@ -444,6 +448,36 @@ a.card:hover .card-link { text-decoration: underline; }
   border-radius: 999px;
   padding: 3px 10px;
 }
+
+/* project lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; }
+.lightbox[hidden] { display: none; }
+.lightbox-overlay { position: absolute; inset: 0; background: rgba(5, 8, 13, 0.78); backdrop-filter: blur(4px); }
+.lightbox-dialog {
+  position: relative; z-index: 1;
+  width: min(760px, 100%); max-height: 90vh; overflow: auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  animation: lb-in .18s ease;
+}
+@keyframes lb-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.lightbox-close {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  display: grid; place-items: center; width: 40px; height: 40px;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(10, 14, 22, 0.55); color: #fff; backdrop-filter: blur(4px);
+}
+.lightbox-close:hover { background: rgba(10, 14, 22, 0.85); }
+.lightbox-close .ico { width: 22px; height: 22px; }
+.lightbox-media { background: #0a0e16; display: grid; place-items: center; }
+.lightbox-media img { display: block; width: 100%; max-height: 60vh; object-fit: contain; }
+.lightbox-media .ico { width: 76px; height: 76px; color: var(--accent-strong); opacity: .6; margin: 52px 0; }
+.lightbox-info { padding: 22px 24px 26px; }
+.lightbox-info h3 { font-size: 1.4rem; margin: 0 0 8px; }
+.lightbox-info p { color: var(--text-soft); margin: 0; }
+.lightbox-info .tags { margin-top: 14px; }
+body.lb-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .lightbox-dialog { animation: none; } }
 
 /* faq */
 .faq-head .section-lede { margin-top: 10px; }

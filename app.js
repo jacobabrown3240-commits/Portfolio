@@ -71,6 +71,64 @@ if (contactForm) {
   });
 }
 
+// Project cards → open a lightbox with the enlarged image + details.
+// Cards are <button>s, so clicking never navigates or scrolls the page.
+const lightbox = document.getElementById('lightbox');
+if (lightbox) {
+  const lbMedia = document.getElementById('lbMedia');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbDesc = document.getElementById('lbDesc');
+  const lbTags = document.getElementById('lbTags');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  let lastFocused = null;
+
+  const openLightbox = (card) => {
+    const img = card.querySelector('.project-thumb img');
+    const icon = card.querySelector('.project-thumb .ico');
+    const title = card.querySelector('h3');
+    const desc = card.querySelector('.project-body p');
+
+    lbMedia.innerHTML = '';
+    if (img) {
+      const big = document.createElement('img');
+      big.src = img.src;
+      big.alt = img.alt || '';
+      lbMedia.appendChild(big);
+    } else if (icon) {
+      lbMedia.appendChild(icon.cloneNode(true));
+    }
+    lbTitle.textContent = title ? title.textContent : '';
+    lbDesc.textContent = desc ? desc.textContent : '';
+    lbTags.innerHTML = '';
+    card.querySelectorAll('.tags li').forEach((t) => {
+      const li = document.createElement('li');
+      li.textContent = t.textContent;
+      lbTags.appendChild(li);
+    });
+
+    lastFocused = document.activeElement;
+    lightbox.hidden = false;
+    document.body.classList.add('lb-open');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('lb-open');
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  };
+
+  document.querySelectorAll('.project').forEach((card) => {
+    card.addEventListener('click', () => openLightbox(card));
+  });
+  lightbox.querySelectorAll('[data-lb-close]').forEach((el) => {
+    el.addEventListener('click', closeLightbox);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+  });
+}
+
 // Fade elements in as they scroll into view.
 // Everything stays fully visible if JS or IntersectionObserver is unavailable —
 // the hidden state is only applied once we know we can reveal it.
