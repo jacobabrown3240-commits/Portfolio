@@ -438,7 +438,7 @@ a.card:hover .card-link { text-decoration: underline; }
   backdrop-filter: blur(2px);
 }
 .project-body { padding: 18px 20px 22px; }
-.project-body h3 { font-size: 1.15rem; }
+.project-body h3 { font-size: 1.15rem; color: var(--text); }
 .project-body p { color: var(--text-soft); font-size: .95rem; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; }
 .tags li {
