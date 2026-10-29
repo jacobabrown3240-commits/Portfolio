@@ -150,3 +150,13 @@ if (revealEls.length && 'IntersectionObserver' in window && !prefersReduced) {
 
   revealEls.forEach((el) => io.observe(el));
 }
+
+// Back-to-top (and the brand logo) link to #top. The header has id="top" but
+// is position: sticky, so it's always on screen — meaning the plain #top anchor
+// won't scroll anywhere. Handle it in JS so it reliably jumps to the very top.
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+});
